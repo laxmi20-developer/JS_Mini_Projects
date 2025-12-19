@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    console.log("Loading dashboard...");
+
+// API functions returning Promises
+function getUserProfile() {
+    return fetch("https://jsonplaceholder.typicode.com/users/1")
+           .then(res => res.json());
+}
+
+function getNotifications() {
+    return fetch("https://jsonplaceholder.typicode.com/posts?_limit=3")
+           .then(res => res.json());
+}
+
+function getRecentOrders() {
+    return fetch("https://jsonplaceholder.typicode.com/comments?_limit=3")
+           .then(res => res.json());
+}
+
+function getMessages() {
+    return fetch("https://jsonplaceholder.typicode.com/todos?_limit=3")
+           .then(res => res.json());
+}
+
+
+// ---- Using Promise.all ---- //
+Promise.all([
+    getUserProfile(),
+    getNotifications(),
+    getRecentOrders(),
+    getMessages()
+])
+.then(([profile, notifications, orders, messages]) => {
+    console.log("Profile:", profile);
+    console.log("Notifications:", notifications);
+    console.log("Orders:", orders);
+    console.log("Messages:", messages);
+
+    // Render to UI
+    document.body.innerHTML = `
+        <h2>Dashboard</h2>
+        <h3>User: ${profile.name}</h3>
+
+        <h3>Notifications:</h3>
+        <pre>${JSON.stringify(notifications, null, 2)}</pre>
+
+        <h3>Recent Orders:</h3>
+        <pre>${JSON.stringify(orders, null, 2)}</pre>
+
+        <h3>Messages:</h3>
+        <pre>${JSON.stringify(messages, null, 2)}</pre>
+    `;
+})
+.catch(err => {
+    console.log("Some API failed:", err);
+});
+
+  </script>
+</body>
+</html>

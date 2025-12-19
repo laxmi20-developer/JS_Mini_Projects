@@ -1,0 +1,88 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            border: 1px solid blue;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fetching 3 APIs</h1>
+    <div id="root"></div>
+    <script>
+    
+        const divEle=document.getElementById("root");
+     function userAPI(){
+        return fetch("https://jsonplaceholder.typicode.com/users/1").then(res=>res.json());
+     }
+       function commentsAPI(){
+        return fetch("https://jsonplaceholder.typicode.com/comments/1").then(res=>res.json());
+     }
+       function photosAPI(){
+        return fetch("https://jsonplaceholder.typicode.com/photos/1").then(res=>res.json());
+     }
+     Promise.all([userAPI(),photosAPI(),commentsAPI()])
+     .then(([user,photo,comment])=>{
+        console.log(user);
+        console.log(photo);
+        console.log(comment);
+        const child=`
+        <h2>userName:${user.name}</h2>
+        <h3>Photo:${photo.title}</h3>
+        <p>Comment:${comment.body} <?p>`
+        divEle.innerHTML=child;
+     })
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            border: 1px solid blue;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fetching 3 APIs</h1>
+    <div id="root"></div>
+    <script>
+    
+        const divEle=document.getElementById("root");
+      fetch("https://jsonplaceholder.typicode.com/users/1").then(res=>res.json())
+      .then(d=>{const h2=document.createElement("h2");
+      const text=d.
+        console.log(h2);
+      });
+     
+       fetch("https://jsonplaceholder.typicode.com/comments/1").then(res=>res.json())
+      .then(d=>{divEle.appendChild(document.createElement("h2").textContent=d.body)});
+     
+       fetch("https://jsonplaceholder.typicode.com/photos/1").then(res=>res.json())
+      .then(d=>{divEle.appendChild(document.createElement("h2").textContent=d.title)});
+     
+    //  Promise.all([userAPI(),photosAPI(),commentsAPI()])
+    //  .then(([user,photo,comment])=>{
+    //     console.log(user);
+    //     console.log(photo);
+    //     console.log(comment);
+    //     const child=`
+    //     <h2>userName:${user.name}</h2>
+    //     <h3>Photo:${photo.title}</h3>
+    //     <p>Comment:${comment.body} <?p>`
+    //     divEle.innerHTML=child;
+    //  })
+    </script>
+</body>
+</html>

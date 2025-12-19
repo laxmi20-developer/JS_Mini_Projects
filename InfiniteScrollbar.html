@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Scroll Bar</title>
+    <style>
+        .divStyles {
+            border: 2px dashed green;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            background-color: bisque;
+        }
+
+        span {
+            font-weight: bold;
+        }
+
+        #loading {
+            text-align: center;
+            font-size: 18px;
+            margin: 20px 0;
+            color: blue;
+            display: none;
+        }
+
+        #error {
+            text-align: center;
+            font-size: 18px;
+            margin: 20px 0;
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Infinite Scroll Bar</h1>
+
+    <div id="root"></div>
+
+    <p id="loading">Loading...</p>
+    <p id="error">Something went wrong. Please try again!</p>
+
+    <script>
+        let divEle = document.getElementById("root");
+        let currentPage = 1;
+        let hasMore = true;
+        let isLoading = false;
+
+        async function fetchData() {
+            if (isLoading || !hasMore) return;
+
+            isLoading = true;
+            document.getElementById("loading").style.display = "block";
+            document.getElementById("error").style.display = "none";
+
+            try {
+                const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_page=${currentPage}`);
+
+                if (!res.ok) {
+                    throw new Error("Network response was not ok");
+                }
+
+                const data = await res.json();
+                console.log(data);
+
+                if (data.length === 0) {
+                    hasMore = false;
+                    document.getElementById("loading").innerText = "No more data!";
+                    return;
+                }
+
+                data.forEach(post => {
+                    let div = document.createElement("div");
+                    div.classList.add("divStyles");
+                    div.innerHTML = `
+                        <h6><span>Id: </span>${post.id}</h6>
+                        <p><span>Title: </span>${post.title}</p>
+                        <p><span>Body: </span>${post.body}</p>`;
+                    divEle.appendChild(div);
+                });
+
+            } catch (err) {
+                document.getElementById("error").style.display = "block";
+            } finally {
+                document.getElementById("loading").style.display = "none";
+                isLoading = false;
+            }
+        }
+
+        // Load first page
+        fetchData();
+
+        // Infinite scroll
+        window.addEventListener("scroll", () => {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
+                currentPage++;
+                fetchData();
+            }
+        });
+    </script>
+</body>
+
+</html>

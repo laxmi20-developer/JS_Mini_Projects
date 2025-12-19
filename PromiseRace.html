@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // API function
+function fetchUser() {
+  return fetch("https://jsonplaceholder.typicode.com/users/1")
+         .then(res => res.json());
+}
+
+// Timeout function
+function timeout(ms) {
+  return new Promise((_, reject) => {
+    setTimeout(() => reject("⏳ Request timed out!"), ms);
+  });
+}
+
+// Race between API and timeout
+Promise.race([
+  fetchUser(),
+  timeout(3000) // 3 seconds
+])
+.then(result => {
+  console.log("API Success:", result);
+})
+.catch(err => {
+  console.log("Error:", err);
+});
+
+    </script>
+</body>
+</html>

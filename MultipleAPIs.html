@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Multiple API Results (Parallel Fetch)</h2>
+<div id="root"></div>
+
+<script>
+let root = document.getElementById("root");
+
+async function loadApis() {
+    const urls = [
+        "https://jsonplaceholder.typicode.com/posts?_limit=5",
+        "https://jsonplaceholder.typicode.com/users?_limit=5",
+        "https://jsonplaceholder.typicode.com/comments?_limit=5"
+    ];
+
+    try {
+        const responses = await Promise.all(urls.map(url => fetch(url)));
+        const data = await Promise.all(responses.map(res => res.json()));
+
+        data.forEach((result, index) => {
+            let div = document.createElement("div");
+            div.style.border = "2px solid green";
+            div.style.margin = "10px 0";
+            div.style.padding = "10px";
+
+            div.innerHTML = `
+                <h3>API ${index + 1}</h3>
+                <pre>${JSON.stringify(result, null, 2)}</pre>
+            `;
+            root.appendChild(div);
+        });
+
+    } catch (error) {
+        root.innerHTML = "<h3 style='color:red;'>Error while loading APIs</h3>";
+    }
+}
+
+loadApis();
+</script>
+
+</body>
+</html>
