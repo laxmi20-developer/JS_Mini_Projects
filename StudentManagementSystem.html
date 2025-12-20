@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Management Dashboard</title>
+  <style>
+    :root {
+      --accent: #2563eb;
+      --muted: #6b7280;
+      --bg: #f8fafc;
+      --card: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: Inter, system-ui, Segoe UI, Roboto, 'Helvetica Neue', Arial
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      padding: 24px;
+      color: #0f172a
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px
+    }
+
+    h1 {
+      font-size: 20px;
+      margin: 0
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 18px
+    }
+
+    .card {
+      background: var(--card);
+      padding: 16px;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06)
+    }
+
+    form .row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px
+    }
+
+    label {
+      font-size: 13px;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 6px
+    }
+
+    input[type='text'],
+    input[type='number'],
+    select {
+      width: 100%;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #e6eef8
+    }
+
+    button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer
+    }
+
+    button.ghost {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid rgba(37, 99, 235, 0.12)
+    }
+
+    .controls {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px
+    }
+
+    .controls>* {
+      flex: 1 1 160px
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse
+    }
+
+    th,
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #f1f5f9;
+      text-align: left
+    }
+
+    th {
+      font-size: 13px;
+      color: var(--muted)
+    }
+
+    tr:hover td {
+      background: #fbfdff
+    }
+
+    .actions button {
+      margin-right: 6px
+    }
+
+    .stats {
+      display: flex;
+      flex-direction: column;
+      gap: 8px
+    }
+
+    .stat {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      border-radius: 8px;
+      background: #f8fafc;
+      border: 1px solid #eef2ff
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 13px
+    }
+
+    .empty {
+      padding: 24px;
+      text-align: center;
+      color: var(--muted)
+    }
+
+    footer {
+      margin-top: 18px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px
+    }
+
+    @media (max-width:900px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .controls>* {
+        flex: 1 1 100%
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Student Management Dashboard</h1>
+      <div class="muted">Mini project • DOM • Events • Array methods • Destructuring</div>
+    </header>
+
+    <div class="grid">
+      <!-- MAIN CONTENT -->
+      <div>
+        <div class="card">
+          <form id="studentForm">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+              <strong>Add New Student</strong>
+              <div class="muted">Fill details and press Add</div>
+            </div>
+
+            <div class="row">
+              <div style="flex:2">
+                <label for="name">Name</label>
+                <input id="name" type="text" placeholder="Student name" required />
+              </div>
+              <div style="flex:1">
+                <label for="age">Age</label>
+                <input id="age" type="number" min="1" placeholder="Age" required />
+              </div>
+            </div>
+
+            <div class="row">
+              <div style="flex:1">
+                <label for="grade">Grade</label>
+                <select id="grade">
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
+                  <option value="D">D</option>
+                </select>
+              </div>
+              <div style="flex:1">
+                <label for="marks">Marks</label>
+                <input id="marks" type="number" min="0" max="100" placeholder="0 - 100" required />
+              </div>
+            </div>
+
+            <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
+              <button type="submit" id="addBtn">Add Student</button>
+              <button type="button" id="resetBtn" class="ghost">Reset</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+            <strong>Students</strong>
+            <div class="muted">Total: <span id="totalCount">0</span></div>
+          </div>
+
+          <div class="controls">
+            <input id="search" type="text" placeholder="Search by name..." />
+            <select id="filterGrade">
+              <option value="">All Grades</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+              <option value="pass">Pass (>=40)</option>
+              <option value="fail">Fail (&lt;40)</option>
+            </select>
+
+            <select id="sortBy">
+              <option value="">Sort</option>
+              <option value="marks_desc">Marks (High → Low)</option>
+              <option value="marks_asc">Marks (Low → High)</option>
+              <option value="name_asc">Name (A → Z)</option>
+            </select>
+
+            <button id="clearFilters" class="ghost">Clear</button>
+          </div>
+
+          <div id="tableWrap"></div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card stats">
+          <strong>Class Statistics</strong>
+          <div id="statsArea">
+            <div class="stat">
+              <div class="muted">Total Students</div>
+              <div id="statTotal">0</div>
+            </div>
+            <div class="stat">
+              <div class="muted">Average Marks</div>
+              <div id="statAvg">0</div>
+            </div>
+            <div class="stat">
+              <div class="muted">Highest Marks</div>
+              <div id="statHigh">0</div>
+            </div>
+            <div class="stat">
+              <div class="muted">Lowest Marks</div>
+              <div id="statLow">0</div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px"><button id="saveLocal" class="ghost">Save to localStorage</button></div>
+          <div style="margin-top:8px"><button id="loadLocal">Load from localStorage</button></div>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <strong>Tips</strong>
+          <ul class="muted" style="padding-left:18px;margin-top:8px">
+            <li>Project practises: DOM, events, array/object methods, destructuring</li>
+            <li>Use browser console to debug (F12)</li>
+            <li>Try adding / deleting / sorting students</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <footer>Completed project — Student Management Dashboard</footer>
+  </div>
+
+  <script>
+    // ==========================
+    // Sample data (initial)
+    // ==========================
+    const sampleStudents = [
+      { id: 1, name: 'John Doe', age: 20, grade: 'A', marks: 88 },
+      { id: 2, name: 'Priya Sharma', age: 19, grade: 'B', marks: 74 },
+      { id: 3, name: 'Amit Singh', age: 22, grade: 'A', marks: 92 },
+      { id: 4, name: 'Sara Khan', age: 18, grade: 'C', marks: 56 },
+      { id: 5, name: 'Rohit Verma', age: 21, grade: 'D', marks: 33 }
+    ];
+
+    // ==========================
+    // App State
+    // ==========================
+    let students = [...sampleStudents]; // main array
+    let filteredStudents = [...students]; // currently visible after search/filter/sort
+
+    // ==========================
+    // DOM References
+    // ==========================
+    const studentForm = document.getElementById('studentForm');
+    const nameInput = document.getElementById('name');
+    const ageInput = document.getElementById('age');
+    const gradeInput = document.getElementById('grade');
+    const marksInput = document.getElementById('marks');
+    const addBtn = document.getElementById('addBtn');
+    const resetBtn = document.getElementById('resetBtn');
+
+    const searchInput = document.getElementById('search');
+    const filterGrade = document.getElementById('filterGrade');
+    const sortBy = document.getElementById('sortBy');
+    const clearFilters = document.getElementById('clearFilters');
+
+    const tableWrap = document.getElementById('tableWrap');
+    const totalCount = document.getElementById('totalCount');
+
+    const statTotal = document.getElementById('statTotal');
+    const statAvg = document.getElementById('statAvg');
+    const statHigh = document.getElementById('statHigh');
+    const statLow = document.getElementById('statLow');
+    const saveLocal = document.getElementById('saveLocal');
+    const loadLocal = document.getElementById('loadLocal');
+
+    // ==========================
+    // Utilities
+    // ==========================
+    function uid() { return Date.now() + Math.floor(Math.random() * 1000); }
+
+    // Render students table - uses forEach + destructuring
+    function renderStudents(list) {
+      totalCount.textContent = list.length;
+      statTotal.textContent = list.length;
+
+      if (!list.length) {
+        tableWrap.innerHTML = '<div class="empty">No students found.</div>';
+        renderStats([]);
+        return;
+      }
+
+      // Build table
+      const rows = list.map(student => {
+        // object destructuring - renaming not required here, but shown as example
+        const { id, name, age, grade, marks } = student;
+
+        return (`
+          <tr data-id="${id}">
+            <td>${name}</td>
+            <td>${age}</td>
+            <td>${grade}</td>
+            <td>${marks}</td>
+            <td class="actions">
+              <button data-action="delete" data-id="${id}">Delete</button>
+            </td>
+          </tr>
+        `);
+      }).join('');
+
+      tableWrap.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Grade</th>
+              <th>Marks</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows}
+          </tbody>
+        </table>
+      `;
+
+      // attach delete listeners using event delegation
+      tableWrap.querySelector('tbody').addEventListener('click', handleTableClick);
+
+      // update stats
+      renderStats(list);
+    }
+
+    // Render statistics using reduce and map
+    function renderStats(list) {
+      if (!list.length) {
+        statAvg.textContent = '-';
+        statHigh.textContent = '-';
+        statLow.textContent = '-';
+        return;
+      }
+
+      // extract marks using map
+      const marksArr = list.map(s => s.marks);
+
+      // reduce to compute sum
+      const sum = marksArr.reduce((acc, cur) => acc + cur, 0);
+      const avg = (sum / marksArr.length).toFixed(2);
+
+      const high = Math.max(...marksArr);
+      const low = Math.min(...marksArr);
+
+      statAvg.textContent = avg;
+      statHigh.textContent = high;
+      statLow.textContent = low;
+    }
+
+    // ==========================
+    // CRUD & Event Handlers
+    // ==========================
+    function handleAddStudent(e) {
+      e.preventDefault();
+
+      // simple validation
+      const name = nameInput.value.trim();
+      const age = Number(ageInput.value);
+      const grade = gradeInput.value;
+      const marks = Number(marksInput.value);
+
+      if (!name || !age || isNaN(marks)) {
+        alert('Please provide valid name, age and marks');
+        return;
+      }
+
+      const newStudent = { id: uid(), name, age, grade, marks };
+
+      // add to array (immutably)
+      students = [newStudent, ...students];
+
+      // after change, update filteredStudents and UI
+      applyFiltersAndSort();
+
+      studentForm.reset();
+    }
+
+    function handleReset() {
+      studentForm.reset();
+    }
+
+    function handleTableClick(e) {
+      const action = e.target.dataset.action;
+      if (action === 'delete') {
+        const id = Number(e.target.dataset.id);
+        deleteStudent(id);
+      }
+    }
+
+    function deleteStudent(id) {
+      if (!confirm('Delete this student?')) return;
+      students = students.filter(s => s.id !== id); // uses filter
+      applyFiltersAndSort();
+    }
+
+    // ==========================
+    // Filters, Search, Sort
+    // ==========================
+    function applyFiltersAndSort() {
+      const search = searchInput.value.trim().toLowerCase();
+      const gradeFilter = filterGrade.value;
+      const sortVal = sortBy.value;
+
+      // start from the original students array
+      let result = [...students];
+
+      // search by name - uses string includes
+      if (search) {
+        result = result.filter(s => s.name.toLowerCase().includes(search));
+      }
+
+      // grade filter
+      if (gradeFilter) {
+        if (gradeFilter === 'pass') {
+          result = result.filter(s => s.marks >= 40);
+        } else if (gradeFilter === 'fail') {
+          result = result.filter(s => s.marks < 40);
+        } else {
+          result = result.filter(s => s.grade === gradeFilter);
+        }
+      }
+
+      // sorting
+      if (sortVal) {
+        if (sortVal === 'marks_desc') {
+          result.sort((a, b) => b.marks - a.marks);
+        } else if (sortVal === 'marks_asc') {
+          result.sort((a, b) => a.marks - b.marks);
+        } else if (sortVal === 'name_asc') {
+          result.sort((a, b) => a.name.localeCompare(b.name));
+        }
+      }
+
+      // update filtered and render
+      filteredStudents = result;
+      renderStudents(filteredStudents);
+    }
+
+    function clearAllFilters() {
+      searchInput.value = '';
+      filterGrade.value = '';
+      sortBy.value = '';
+      applyFiltersAndSort();
+    }
+
+    // ==========================
+    // localStorage helpers
+    // ==========================
+    function saveToLocal() {
+      localStorage.setItem('students_data', JSON.stringify(students));
+      alert('Saved to localStorage');
+    }
+
+    function loadFromLocal() {
+      const raw = localStorage.getItem('students_data');
+      if (!raw) { alert('No saved data found'); return; }
+      try {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) {
+          students = parsed;
+          applyFiltersAndSort();
+        } else {
+          alert('Saved data is invalid');
+        }
+      } catch (err) { alert('Failed to load data'); }
+    }
+
+    // ==========================
+    // Attach events
+    // ==========================
+    studentForm.addEventListener('submit', handleAddStudent);
+    resetBtn.addEventListener('click', handleReset);
+
+    searchInput.addEventListener('input', () => applyFiltersAndSort());
+    filterGrade.addEventListener('change', () => applyFiltersAndSort());
+    sortBy.addEventListener('change', () => applyFiltersAndSort());
+    clearFilters.addEventListener('click', clearAllFilters);
+
+    saveLocal.addEventListener('click', saveToLocal);
+    loadLocal.addEventListener('click', loadFromLocal);
+
+    // initial render
+    applyFiltersAndSort();
+  </script>
+</body>
+
+</html>
