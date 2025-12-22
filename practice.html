@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .strike{
+            text-decoration: line-through;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text" id="ip">
+        <button>ADD</button>
+    </div>
+    <ul>
+        <!-- <li><span>Content</span> <span><button>Done</button> <button>Edit</button><button>Delete</button></span></li> -->
+    </ul>
+    <script>
+        const ipEle=document.getElementById("ip");
+        const btnEle=document.querySelector("button");
+        const ulEle=document.querySelector("ul");
+        btnEle.addEventListener("click",function(){
+             if(ipEle.value!=""&&ipEle.value.trim()!=""){
+            const li=document.createElement("li");
+            li.innerHTML=`<span>${ipEle.value}</span> <span><button onclick="toggleDone(this)">Done</button> <button>Edit</button><button onclick="deleteTask(this)">Delete</button></span>`
+            ulEle.appendChild(li);
+        }
+        else{
+            alert("please enter:");
+        }
+        ipEle.value="";
+        })
+        function toggleDone(button){
+            console.log(button);
+            const listItem=button.parentElement.parentElement;
+            console.log(listItem);
+            listItem.classList.toggle("strike");  
+            const editButton= listItem.querySelector('button[onclick^="editTask"]');
+            
+            if(listItem.classList.contains("strike"))
+            editButton.disabled=true;
+        else
+        editButton.disabled=false;             
+                    }
+        function deleteTask(button){
+            const li=button.closest('li');
+            li.remove();
+        }
+       
+    </script>
+</body>
+</html>
