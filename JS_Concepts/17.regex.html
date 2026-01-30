@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Regular Expression Pattern</h1>
+    <script>
+        let str="Hi all.hi Offline students, hi online students";
+        let regex=/hi/gi;
+        console.log(regex.test(str));
+        console.log(str.match(regex));
+
+        regex=/^hi/i;
+        console.log(regex.test(str));
+
+        regex=/students$/i;
+        console.log(regex.test(str));
+
+        str="forward people,backward people has wardrobe and ward"
+        regex=/\bward/gi;
+        console.log(regex.test(str));
+        console.log(str.match(regex));
+
+        regex=/ward\b/gi;
+        console.log(regex.test(str));
+        console.log(str.match(regex));
+
+        regex=/\bward\b/gi;
+        console.log(regex.test(str));
+        console.log(str.match(regex));
+
+        str="satya brata"
+        regex=/^satya$/
+        console.log(regex.test(str));
+
+         str="organisation"
+        regex=/^organi[sz]ation$/
+        console.log(regex.test(str));
+
+        str="organixation"
+        regex=/^organi.ation$/
+        console.log(regex.test(str));
+
+        str="organi$ation"
+        regex=/^organi\wation$/
+        console.log(regex.test(str));
+
+         str="organi ation"
+        regex=/^organi\Wation$/
+        console.log(regex.test(str));
+
+        str="organi1ation"
+        regex=/^organi\dation$/
+        console.log(regex.test(str)); 
+        
+         str="organi1.7ation"
+        regex=/^organi\dation$/
+        console.log(regex.test(str));
+
+         str="html  css"
+        regex=/^html\s\scss$/
+        console.log(regex.test(str));
+
+        //  str=prompt("Enter string:");
+        // regex=/^hello+$/
+        // console.log(regex.test(str));
+
+        str="hellos";
+        regex=/^hello*$/
+        console.log(regex.test(str));
+
+        str="colour"
+        regex=/^colou?r$/
+        console.log(regex.test(str));
+
+        str="98765432120"
+        regex=/^\d{9}$/;
+        console.log(regex.test(str));
+
+        str="aj"
+        regex=/^\w{0,16}$/;
+        console.log(regex.test(str));
+
+        str="Hello students,hi offline students .hi online students"
+        regex=/hi/g;
+        console.log(str.search(regex))
+        console.log(regex.exec(str));
+        console.log(regex.exec(str));
+        console.log(regex.exec(str));
+        console.log(regex.exec(str));
+        
+        let obj={
+            name:null,
+            null:234
+        }
+        console.log(obj.null);
+        // console.log(z);
+        {
+            let m="rama"
+        }
+        // console.log(m);
+        // console.log(n);
+        let n="ramanjaneyulu"
+
+        const arr=new Array(-1);
+        console.log(arr);
+        
+        
+        
+        
+        </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Functions</h1>
+    <script>
+        // 1.fn without parameters
+        // function gst(){
+        //     let price=1000;
+        //     let percentage=10;
+        //     let tax=price*(10/100);
+        //     console.log("tax:",tax);
+        // }
+        // gst();
+        // gst();
+        // gst();
+
+        //2.function with parameters
+        // function gst(price,percentage){
+        //     const tax=price*(10/100);
+        //      console.log("tax:",tax);
+
+        // } 
+        // gst(1000,100);
+        // gst(2000,15);
+        // console.log("tax:",tax);
+
+        // 3.fn with return statement
+    //     function gst(price,percentage){
+    //         const tax=price*(10/100);
+    //         //  console.log("tax:",tax);
+    //         const tp=price+tax;
+    //         return [tp,tax];
+
+    //     } 
+    //    const tax= gst(1000,100);
+    // //  const t=   gst(2000,15);
+    //     console.log("tax:",tax);
+       
+     //4.function with default parameters
+     gst(1000,20);
+        function gst(price,percentage=10){
+            const tax=price*(percentage/100);
+             console.log("tax:",tax);
+
+        } 
+        gst(1000,20);
+    </script>
+</body>
+</html>

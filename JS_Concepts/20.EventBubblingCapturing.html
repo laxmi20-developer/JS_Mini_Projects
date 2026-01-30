@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubbling and Capturing</title>
+    <style>
+        section{
+            border:2px solid blue;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Event Bubbling</h2>
+    <section>
+        <p>Section 1</p>
+        <section>
+            <p>Section 2</p>
+            <section>
+                <p>Section 3</p>
+            </section>
+        </section>
+    </section>
+
+    <h2>Event Capturing</h2>
+    <section>
+        <p>Section 4</p>
+        <section>
+            <p>Section 5</p>
+            <section>
+                <p>Section 6</p>
+            </section>
+        </section>
+    </section>
+    <script>
+        const sectionEle=document.getElementsByTagName("section");
+        sectionEle[0].addEventListener("click",function(){
+            alert("section 1 is clicked");
+        })
+         sectionEle[1].addEventListener("click",function(e){
+            e.stopPropagation();
+            alert("section 2 is clicked");
+        })
+        sectionEle[2].addEventListener("click",function(e){
+            e.stopPropagation();
+            alert("section 3 is clicked");
+        })
+        // Event Capturing
+         sectionEle[3].addEventListener("click",function(){
+            alert("section 4 is clicked");
+        },false)
+         sectionEle[4].addEventListener("click",function(){
+            alert("section 5 is clicked");
+        },false)
+        sectionEle[5].addEventListener("click",function(){
+            alert("section 6 is clicked");
+        },true)
+        const x=null;
+        console.log(x.name);
+        
+    </script>
+</body>
+</html>

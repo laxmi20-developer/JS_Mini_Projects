@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>String Methods</h1>
+    <script>
+        // string litrel -'' "" ``
+        const name='udAyKumar'
+        console.log("name:",name);
+        // console.log(name[0]);
+        // console.log(name[8]);
+        // console.log(name[9]);
+        // let i=0;
+        // while(name[i]!=undefined){
+        //     console.log(name[i]);
+        //     i++
+        // }
+        console.log("length of a string:",name.length);
+        
+        console.log(typeof name);
+        console.log(name.charAt(5));
+        console.log(name.charCodeAt(2));
+        let str=name.toUpperCase();
+        console.log("str",str,name);
+        console.log(name.toLowerCase());
+        // str=prompt("Enter your name:");
+        // console.log(str,str.length);
+        // console.log(str.trimStart());
+        // console.log(str.trimEnd());
+        // let result=str.trim();
+        // console.log(result,result.length);
+        str="123";
+        console.log(str.padStart(12,'*'));
+        str="98"
+        console.log(str.padEnd(10,'&'));
+
+        str="hi";
+    
+        let result=str.repeat(5);
+        console.log(result);
+        let str2="students";
+        console.log(str2.concat(" ").concat(str));
+        str="welcome to all .hi students hi offline ,hi online"
+        console.log(str.replace("hi","hello"));
+        console.log(str.replaceAll("hi","hello"));
+        console.log(str.indexOf('i'));
+        console.log(str.lastIndexOf('i'));
+        console.log(str.includes("Hi"));
+        console.log(str.slice(0,7));
+        console.log(str.slice(11));
+        console.log(str.substring(7,0));
+        console.log(str.substring(11));
+        console.log(str.substr(8,4));
+        str='vidya lakshmi';
+        console.log(str.split());
+        console.log(str.split(''));
+        console.log(str.split(' '));
+        
+        
+        
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        //string constructor
+        // const str=new String("Rama");
+        // console.log("str:",str);
+        // console.log(typeof str);
+        
+        
+    </script>
+</body>
+</html>

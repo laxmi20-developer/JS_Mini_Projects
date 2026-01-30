@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+    1.function vs method
+    2.HTML collection vs Node list
+    -->
+    <style>
+       .musadhik{
+        border:1px solid red;
+        padding:10px;
+        background-color: blueviolet;
+       }
+    </style>
+</head>
+<body>
+    <div>
+         <h1 id="dom">DOM Selectors</h1>
+         <h2>PrudviRaj</h2>
+         <h2>Vijay</h2>
+         <h2>Vidya</h2>
+        <div>
+            <h4>Rama</h4>
+         </div>
+         <h3 class="online">Ajay</h3>
+         <h3 class="online">Jayanthi</h3>
+         <h3 class="online">Rama</h3>
+
+         <div>
+            <h4>Ramanjaneyulu</h4>
+         </div>
+    </div>
+   
+    <script>
+        const h1Ele=document.getElementById("dom");
+        console.log(h1Ele);
+        console.log(document);
+        
+        h1Ele.style.backgroundColor="green";
+
+        const h2Ele=document.getElementsByTagName("h2");
+        console.log(h2Ele);
+        h2Ele[0,1,2].style.backgroundColor="red";
+        // h2Ele[1].style.backgroundColor="red";
+        // h2Ele[2].style.backgroundColor="red";
+
+        const OnlineEle=document.getElementsByClassName("online");
+        console.log(OnlineEle);
+        for(let ele of OnlineEle){
+            ele.style.backgroundColor="blue"
+        }
+        
+        // const h4Ele=document.querySelector("div h4");
+        // console.log(h4Ele);
+        // h4Ele.classList='musadhik'
+
+        const h4Elements=document.querySelectorAll("div h4");
+        console.log(h4Elements);
+        for(let i=0;h4Elements.length>i;i++){
+            h4Elements[i].classList="musadhik";
+        }
+        
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+    ARIA = Accessible Rich Internet Applications
+    First use semantic HTML.
+    Use ARIA only when semantic HTML is NOT enough.
+    ARIA has 3 main parts:
+    1. Roles (what is this element?)
+    Ex:<div role="button">Save</div>
+    button
+    navigation    
+    dialog    
+    alert    
+    menu    
+    menuitem    
+    2. Properties (extra info)
+    
+    aria-label      
+    aria-describedby
+    3. States (current condition)
+    <button aria-expanded="true">Menu</button>
+    aria-expanded
+    aria-hidden
+    aria-selected
+    aria-disabled
+    aria-checked
+
+When SHOULD you use ARIA? (Interview GOLD)
+    Custom dropdown
+    Custom tabs
+    Modal / popup
+    Accordion
+    Tooltip
+    Dynamic content updates
+    -->
+    <style>
+        div{
+            width:300px;
+            height:300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+ <img src="../assets/js.png" alt="">
+    </div>
+ <button onclick="hideImage()">hide image</button>
+  <br>
+<label for="name">Name</label>
+<input id="name" required aria-required="true" />
+
+    <!-- Modal without ARIA -->
+    <div class="modal">
+        <h2>Delete Item</h2>
+        <button>Yes</button>
+        <button>No</button>
+    </div>
+    <!-- Modal with ARIA -->
+    <div role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <h2 id="modalTitle">Delete Item</h2>
+        <button>Yes</button>
+        <button>No</button>
+    </div>
+<script>
+    function hideImage(){
+        document.querySelector("img").style.display="none"
+    }
+</script>
+</body>
+
+</html>

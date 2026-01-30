@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            color: red;
+            display: none;
+        }
+        input{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Form Validation</h1>
+    <form action="">
+        <input type="text" placeholder="Enter Username">
+        <p>Please enter username</p>
+        <input type="password" placeholder="Enter password">
+        <p>Please enter password</p>
+        <select name="" id="select">
+            <option value="">Select Course</option>
+            <option value="html">HTML</option>
+            <option value="css">CSS</option>
+            <option value="js">JS</option>
+        </select>
+        <button type="submit">Login</button>
+        <button class="empty" type="reset">Reset</button>
+
+    </form>
+    <div id="op"></div>
+    <script>
+        const formEle=document.querySelector("form");
+        const ipEles=document.querySelectorAll("input");
+        const pEles=document.getElementsByTagName("p");
+        const divEle=document.getElementById("op");
+        const selectEle=document.getElementById("select");
+        const buttonEle=document.getElementsByClassName("empty");
+        formEle.addEventListener("submit",(e)=>{
+            e.preventDefault();
+            console.log("submit event");
+            // if(ipEles[0].value==""){
+            //     pEles[0].style.display="block"
+            // }
+            // else{
+            //     pEles[0].style.display="none"
+            // }
+            // if(ipEles[1].value==""){
+            //     pEles[1].style.display="block";
+            // }else{
+            //     pEles[1].style.display="none";
+            // }
+        })
+        // focus event
+        ipEles[0].addEventListener("focus",()=>{
+            divEle.textContent="Username ip field is focused"
+        })
+        // blur
+         ipEles[0].addEventListener("blur",()=>{
+            divEle.textContent="Username ip field is lost focuse"
+        })
+        // change
+        selectEle.addEventListener("change",()=>{
+            divEle.textContent=`User selected course:${selectEle.value}`
+        })
+        // reset
+        formEle.addEventListener("reset",()=>{
+            console.log("reset event");
+            
+            // ipEles[0].value=" ";
+            // ipEles[1].value=" ";
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+    1.if :
+    if(condition){
+    //statements
+    }
+
+    2.if else
+    if(condition){
+    //statements
+    }else{
+    //sgtatements
+    }
+
+    3.else if ladder
+    if(condition1){
+    //statements
+    }else if(condition2){
+    //statements
+    }else if(condition3){
+    }else{
+    //statements
+    }
+
+    4.nested if
+    if(condition1){
+    if(condition2){
+    //statements
+    }
+    //statements
+    }
+
+    5. switch(expression){
+    case value1:{}
+    case value2:{}
+    defualt:{}
+    }
+    -->
+</head>
+
+<body>
+    <h1>Conditions</h1>
+    <script>
+        let m = 100;
+        let n = 500;
+        if (m > n) {
+            console.log("m is greater")
+        } else {
+            console.log("m is smaller")
+        }
+        let marks = 97;
+        if (marks > 90) {
+            console.log("You got grade A")
+        } else if (marks > 70) {
+            console.log("You got grade B")
+        } else if (marks > 50) {
+            console.log("You got grade C")
+
+        } else {
+            // console.log("Better luck next time");
+            alert("Better luck next time");
+        }
+        let temp=55;
+        if(temp>30){
+            console.log("It is sunny");
+            if(temp>50){
+                alert("It is too sunny .better be at home")
+            }
+            
+        }
+
+        // 5.switch-case
+        const busNum=prompt("Enter bus number");
+        switch(busNum){
+            case "500D":console.log("Hebbal to silkboard"); break;
+            case "507":console.log("Hebbal to KR puram");break;
+            default:console.log("Please enter valid bus number")
+        }
+
+
+    </script>
+</body>
+
+</html>

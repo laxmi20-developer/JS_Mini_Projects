@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Destructuring Reduce</h1>
+    <script>
+        // Array Destructuring
+        // const arr=["Jagadeeswar","Prudviraj","Ajay"];
+        // const a=arr[0];
+        // const b=arr[1];
+        // const c=arr[2];
+        // console.log(a,b,c);
+        
+        // const [,,n]=arr;
+        // console.log(l,n);
+
+        // Object destructuring
+        const obj={
+            name1:"Satya",
+            name2:"Vijay"
+        }
+        const a=obj.name1;
+        const b=obj.name2;
+        console.log(a,b);
+        let name1="swaraj";
+        const {name1:name3 ,name2}=obj;
+        console.log(name1,name2,name3);
+
+        // reduce
+        const arr=[1,2,3,4];
+        const sum=arr.reduce((acc,element)=>{
+            console.log("acc,element:",acc,element);
+            return (acc+element)
+            
+        },0)
+        console.log(sum);
+
+        //forEach
+      let result=  arr.forEach((item,index)=>{
+            console.log("item,index:",item,index);
+           return item*item*item;
+        })
+        console.log(result);
+          result=  arr.map((item,index)=>{
+            console.log("item,index:",item,index);
+            return item*item;
+            return item*item*item;
+        })
+           console.log(result);     
+              
+        
+
+    </script>
+    
+</body>
+</html>

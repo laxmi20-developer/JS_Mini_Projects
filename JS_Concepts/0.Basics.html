@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open Image in New Tab</title>
+
+  <style>
+    .upload-btn {
+      padding: 10px 16px;
+      background: #0d6efd;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <h3>MRI</h3>
+
+  <!-- Upload Button -->
+  <label for="iconUpload" class="upload-btn">
+    📁 Upload Image
+  </label>
+
+  <!-- Hidden File Input -->
+  <input type="file" id="iconUpload" accept="image/*" hidden>
+
+  <script>
+    const input = document.getElementById("iconUpload");
+
+    input.addEventListener("change", function () {
+      const file = this.files[0];
+      if (!file) return;
+
+      // Open selected image in new tab
+      const imageURL = URL.createObjectURL(file);
+      window.open(imageURL, "_blank");
+    });
+  </script>
+
+</body>
+</html>
+

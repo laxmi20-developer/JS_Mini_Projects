@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <select name="" id="year">
+        <option>Select Year</option>
+        <option value="1905">1905</option>
+        <option value="1906">1906</option>
+        <option value="1907">1907</option>
+
+    </select>
+    <script>
+        let opt="<option>Select Year</option>"
+        for(let year=1905;year<=2026;year++){
+            opt=opt+" <option value="+year+">"+year+"</option>"
+        }
+        console.log("opt:",opt);
+        document.getElementById("year").innerHTML=opt;
+    </script>
+</body>
+
+</html>

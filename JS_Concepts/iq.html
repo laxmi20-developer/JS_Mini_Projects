@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview & Open Image</title>
+
+  <style>
+    .upload-btn {
+      padding: 10px 16px;
+      background: #0d6efd;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    img {
+      display: none;
+      max-width: 200px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      padding: 5px;
+    }
+
+    .open-btn {
+      display: none;
+      margin-top: 10px;
+      padding: 6px 12px;
+      background: #198754;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h3>MRI</h3>
+
+  <!-- Upload -->
+  <label for="iconUpload" class="upload-btn">
+    📁 Upload Image
+  </label>
+  <input type="file" id="iconUpload" accept="image/*" hidden>
+
+  <!-- Preview -->
+  <img id="preview" alt="Image Preview">
+
+  <!-- Open button -->
+  <a id="openBtn" class="open-btn" target="_blank">
+    🔗 Open in New Tab
+  </a>
+
+  <script>
+    const input = document.getElementById("iconUpload");
+    const preview = document.getElementById("preview");
+    const openBtn = document.getElementById("openBtn");
+
+    let imageURL = "";
+
+    input.addEventListener("change", function () {
+        console.log("this:",this.files);
+        {0:"mmmmmm"}
+        
+      const file = this.files[0];
+        console.log("file:",file);
+        
+      if (!file) return;
+
+      if (!file.type.startsWith("image/")) {
+        alert("Please select an image");
+        return;
+      }
+
+      imageURL = URL.createObjectURL(file);
+
+      // show preview
+      preview.src = imageURL;
+      preview.style.display = "block";
+
+      // enable open button
+      openBtn.href = imageURL;
+      openBtn.style.display = "inline-block";
+    });
+  </script>
+
+</body>
+</html>

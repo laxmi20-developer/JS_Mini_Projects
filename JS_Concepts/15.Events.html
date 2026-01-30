@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .border{
+            border:1px solid gray;
+            padding: 20px 10px;
+        }
+        body{
+            height:1000px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Event Types</h1>
+    <button>click</button>
+    <button>DoubleClick</button>
+    <button>mousedown</button>
+    <button>mouseup</button>
+    
+    <script>
+        const btnEle=document.getElementsByTagName("button");
+        btnEle[0].addEventListener("click",function(){
+            alert("Button is clicked");
+        })
+        btnEle[1].addEventListener("dblclick",function(){
+            alert("Button is double clicked");
+        })
+        btnEle[2].addEventListener("mousedown",function(){
+            alert("mousedown");
+        })
+          btnEle[3].addEventListener("mouseup",function(){
+            alert("mouseup");
+        })
+        const h1Ele=document.querySelector("h1");
+        h1Ele.addEventListener("mouseenter",function(){
+            // h1Ele.style.border="1px solid gray";
+            h1Ele.classList.add("border");
+        })
+         h1Ele.addEventListener("mouseleave",function(){
+            // h1Ele.style.border=0;
+            h1Ele.classList.remove("border");
+        })
+        h1Ele.addEventListener("mousemove",function(){
+            console.log("Mouse is moving on element")
+        })
+        // keyboard events
+        console.log("window",window);
+        
+        window.addEventListener("keyup",function(event){
+            console.log("event:",event);
+            
+            alert("keyup:"+event.key);
+        })
+        //  window.addEventListener("keydown",function(){
+        //     alert("keydown");
+        // })
+        // window events
+        window.addEventListener("load",function(){
+            console.log("document is loaded");
+        })
+         window.addEventListener("scroll",function(){
+            console.log("webpage is scrolling");
+        })
+         window.addEventListener("resize",function(){
+            console.log("webpage is resizing");
+        })
+         window.addEventListener("offline",function(){
+            console.log("you are offline");
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Datatypes</h1>
+    <script>
+        console.log(Number.MAX_SAFE_INTEGER);
+        let n=9007199254740991n;
+        console.log(n);
+        n=n+1n;
+        console.log(n);
+        n=n+9007199254740991n;
+        console.log(n);
+        // 1.801439850948198e+16
+        console.log(typeof n);
+        
+        function add(){
+            console.log("function")
+        }
+        console.log(add);
+        console.log(typeof add);
+        let a=100;
+        console.log(a);
+        
+        a=200
+        console.log(a);
+        const arr=[10,[20,30],40]
+        console.log(arr);
+        console.log(arr[1]);
+        console.log(arr[1][0]);
+        
+        
+    </script>
+</body>
+</html>

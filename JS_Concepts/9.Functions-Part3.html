@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recurssive</title>
+    <!--
+    IIFE
+    (function(){
+    })();
+    Recurrsive fun: A fn calling itself is called as recurssive
+    function fn_name(parameter){
+         if(condition){
+         return ;
+        }
+       fn_name(modified_parameter);
+    } 
+    fn_name();
+
+    !5=5*4*3*2*1
+      =5*!4
+      =5*4*!3
+      =5*4*3*!2
+      =5*4*3*2*1
+
+    Template literals:
+    ``
+    
+    -->
+</head>
+
+<body>
+    <script>
+        // 10.IIFE
+        const sum = (function add(x, y) {
+            console.log("IIFE");
+            // console.log("sum:",x+y);
+            return x + y
+
+        })
+            // let i=0;
+            (100, 200);
+        console.log("sum:", sum);
+
+        // 11.Recurssive
+        // function print(x){
+        //     console.log("x:",x);
+
+        //     if(x>=5){
+        //         return
+        //     }
+        //     print(x+1)
+        // }
+        // print(1)
+        function factorial(x) {
+            // debugger
+            console.log("x:", x);
+            // if (x == 1) {
+            //     return 1;
+            // }
+            return x * factorial(x - 1);
+
+        }
+        const result = factorial(4);
+        console.log("result:", result);
+
+
+        let num=25;
+//         let course = `JavaScript.
+//  ReactJS`;
+       let course = "Javascript will complete with in "+num+" be ready";
+               console.log("course:", course);
+
+            course = `Javascript will complete with in ${num} be ready`;
+
+
+        console.log("course:", course);
+
+
+
+    </script>
+
+</body>
+
+</html>

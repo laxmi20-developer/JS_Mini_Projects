@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOm Manipulations</title>
+    <style>
+        /* .ab{
+            background-color: green;
+        }
+        .xy{
+            border: 5px dotted red;
+        } */
+         div{
+            border:2px solid blue;
+            padding: 20px;
+         }
+    </style>
+</head>
+<body>
+    <!-- <h1 id="element">DOM Manipulations</h1> -->
+    <!-- <button onclick="toggle()">toggling ab class</button> -->
+    <!-- Dom Manipulations -->
+     <!-- <figure>
+        <img src="./assets/js.png" alt="">
+        <figcaption>It makes webpage interactive and dynamic</figcaption>
+     </figure> -->
+     <a href="www.achieversit.com">AchieversIT</a>
+     <h3>We are learning JS <span style="opacity: 0;">And ReactJS</span></h3>
+     <div>
+        
+     </div>
+    
+    <script>
+        
+
+        // const h1Ele=document.getElementById("element");
+        // h1Ele.classList="ab";
+        //  h1Ele.classList.add("xy");
+        // //   h1Ele.classList.remove("ab");
+        // function toggle(){
+        //     h1Ele.classList.toggle("ab");
+        // }
+        // const figure=document.createElement("figure");
+        // console.log(figure);
+        // const image=document.createElement("img");
+        // console.log(image);
+        // image.setAttribute("src","./assets/js.png");
+        // image.alt="Js Image";
+        // const figcap=document.createElement('figcaption');
+        // console.log(figcap);
+        // const content=document.createTextNode("It makes webpage interactive and dynamic");
+        // console.log(content);
+        // figcap.appendChild(content);
+        // console.log(figcap);
+        // figure.appendChild(image);
+        // figure.appendChild(figcap);
+        // console.log(figure);
+        // document.querySelector("body").appendChild(figure);
+        const value=document.getElementsByTagName('a')[0].getAttribute('href');
+   console.log(value);
+   const h3Ele=document.getElementsByTagName('h3');
+   console.log(h3Ele);
+   let text=h3Ele[0].textContent;
+   console.log(text);
+    text=h3Ele[0].innerText;
+   console.log(text);
+    text=h3Ele[0].innerHTML;
+   console.log(text);
+   const divEle=document.querySelector('div');
+   console.log(divEle);
+   
+//    divEle.textContent="<h1>Vijay</h1>";
+//    divEle.innerText="JavaScript";
+//    divEle.innerHTML="JavaScript";
+//    divEle.innerHTML="Vijay";
+//    divEle.innerHTML="<h1>Vijay</h1>";
+const figure=`<figure>
+        <img src="./assets/js.png" alt="">
+        <figcaption>It makes webpage interactive and dynamic</figcaption>
+     </figure>`;
+     divEle.innerHTML=figure;
+   
+   
+   </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>spread operator</h1>
+    <script>
+        const arr1=[1,2,3,4];
+        const arr2=arr1;
+        console.log(arr1,arr2);
+        arr2[0]=10;
+        console.log(arr1,arr2);
+        console.log(arr1);
+        const arr3=[...arr1];
+        console.log(arr1,arr3);
+        arr3[0]=100;
+        console.log(arr1,arr3);
+        const arr4=[...arr1,...arr2,...arr3];
+        console.log(arr4);
+
+        let arr5=[500,...arr1,1500]
+        console.log(arr5);
+        arr5=arr5.map((item,index)=>{
+          return  index==2?2000:item
+        })
+        console.log(arr5);
+
+         arr5=arr5.filter((item,index)=>{
+          return  index!=4;
+        })
+        console.log(arr5);
+
+        const obj1={course:"js"}
+        const obj2={...obj1};
+        console.log(obj1==obj2);
+
+        const obj3=obj1;
+        console.log(obj1==obj3);
+
+        console.log(obj1,obj2);
+        obj2.course="reactJs";
+        console.log(obj1,obj2);
+        console.log(obj1==obj2);
+
+        const obj4={...obj1,duration:24};
+        console.log(obj1,obj4);
+
+        const obj5={...obj4,duration:22};
+        console.log(obj4,obj5);
+        
+
+        
+
+    </script>
+</body>
+</html>

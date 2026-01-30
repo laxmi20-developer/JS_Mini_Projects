@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables</title>
+    <!-- 
+    rules:
+    lower /uppercase letters _$
+    -->
+</head>
+<body>
+    <h1>Variables</h1>
+    <script>
+        // var
+        var course;//declaration
+        course="Javascript"//initialization
+        console.log("course:",course);
+        var userName;
+        var user;
+        var course;//re-declaration
+        course="ReactJS";//re-intialization
+        console.log("course:",course);
+
+        // let
+        let student="Rama";
+        console.log("student:",student);
+        // let student; re-declaration is not possible
+        student="Ramanjaneyulu";//re-initialization is possible
+        console.log("student:",student);
+
+        // const
+        const jsTrainer="laxmi";
+        console.log(jsTrainer);
+        // jsTrainer="nagesh"; redeclaration & re-initialization is not possible
+        // console.log(jsTrainer);
+
+        // global vs local wrt types of variables
+        // {
+        //     var a=10;
+        //     console.log("a:",a);
+        // }
+        //     console.log("a:",a);
+        // {
+        //     let b=20;
+        //     const c=30
+        //     console.log("b,c:",b,c);
+        // }
+        //     console.log("c:",c);
+        //     console.log("b:",b);
+        var a=10;
+        let b=20;
+        const c=30;
+        {
+            console.log("a:",a);
+            console.log("b:",b);
+            console.log("c:",c);
+            var d=40;
+            let e=50;
+            const f=60;          
+            
+            
+        }
+        console.log("d:",d);
+        console.log("e",e);
+        
+        
+    </script>
+</body>
+</html>

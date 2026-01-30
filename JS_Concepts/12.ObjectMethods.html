@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Object and its Methods</h2>
+    <script>
+        const obj = {
+            name: "HP laptop",
+            price: 30000
+        }
+        console.log(obj);
+        obj.color = "Gray";
+        obj.ram = "4GB";
+        console.log(obj);
+        obj.price = 35000;
+        console.log(obj);
+        delete obj.color;
+        console.log(obj);
+        document.write(`<h3>${obj.name}</h3>`)
+        document.write(`<h3>${obj.price}</h3>`)
+        document.write(`<h3>${obj.ram}</h3>`)
+        // for in loop on Objects
+        for (let key in obj) {
+            console.log("key:", key);
+            console.log("value", obj.key);
+            console.log("value", obj[key]);
+            document.write(`<h3>${obj[key]}</h3>`)
+
+        }
+        console.log(Object.keys(obj));
+        console.log(Object.values(obj));
+        console.log(Object.entries(obj));
+        const arr = Object.entries(obj)
+        console.log(Object.fromEntries(arr));
+        console.log(obj);
+
+        // freeze
+        // console.log(Object.isFrozen(obj));
+        // Object.freeze(obj);
+        // obj.color="black";
+        // obj.name="lenova";
+        // delete obj.ram;
+        console.log(obj);
+        // console.log(Object.isFrozen(obj));
+        // seal
+        // Object.seal(obj);
+        // obj.color="black";
+        // obj.name="lenova";
+        // delete obj.ram;
+
+        // isPreventExtension
+        Object.preventExtensions(obj);
+        obj.color = "black";
+        obj.name = "lenova";
+        delete obj.ram;
+        console.log(obj);
+        console.log(Object.isExtensible(obj));
+        console.log(obj.hasOwnProperty('price'));
+
+        const student = {
+            id: 1,
+            name: "Ganesh",
+
+        }
+        const course = {
+            name: "JS",
+            classes: 25
+        }
+        console.log(Object.assign(student, course));
+        console.log(student, course);
+
+
+
+
+        // document.write(`<h2>${obj.name}</h2>`);
+        // const student=new Object();
+        // console.log(student);
+        // student.name="Ganesh";
+        // student.course="js";
+        // console.log(student);
+    </script>
+</body>
+
+</html>

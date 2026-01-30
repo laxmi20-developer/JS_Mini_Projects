@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+     Lexical scope:accessibility of outer fn variable within inner fn is called as lexical scope
+     closure:Ability of a accessing outer fn variable within inner fn after completion of outer fn execution
+     callback fn:sending a fn as a argument to another fn is called as callback fn
+     HigherOrder function:A fn is taking another fn as argument or 
+                        A fn is returning another fn or
+                        A fn is taking another fn as argument and A fn is returning another fn
+     
+    -->
+</head>
+<body>
+    <h1>Ananomous </h1>
+    <script>
+        // 5.Ananamous ,6.varaible/fn expresion
+    //   let fn=  function (){
+    //         console.log("fn without name");
+    //     }
+    // console.log("fn:",fn);
+    // fn();
+    // // 7.nested fn with lexical scope
+    // function parent(){
+    //     console.log("Parent fn");
+    //     let count=0;
+    //     function child(){
+    //         console.log("Child fn");
+    //         count=count+1;
+    //         console.log("count:",count);           
+            
+    //     }
+    //     child();
+    // }
+    // parent();
+    // console.log("count:",count);  
+    
+      // 7.nested fn with closure
+    //   debugger
+    // function parent(){
+    //     console.log("Parent fn");
+    //     let count=0;
+    //     function child(){
+    //         console.log("Child fn");
+    //         count=count+1;
+    //         console.log("count:",count);           
+            
+    //     }
+    //     // child();
+    //     return child;
+    // }
+    // const fn=parent();
+    // console.log("fn:",fn);
+    // fn();
+
+    // 8.callback fn
+    // function gm(){
+    //     console.log("GoodMorning");
+        
+    // }
+    // function ga(){
+    //     console.log("Good Afternoon");
+        
+    // }
+    // gm();
+    // ga();
+
+     function gm(cb){
+        console.log("GoodMorning");
+        cb();
+    }
+    function ga(){
+        console.log("Good Afternoon");
+        
+    }
+    gm(ga);
+    // ga();
+    
+    // 9.Arrow function
+//     function add(x,y){
+//         return x+y
+//     }
+//    const sum= add(10,20);
+// ()=>{}
+// const add=(x,y)=>{return x+y;}
+console.log(add(10,20));
+var add=(x,y)=> x+y;
+
+console.log(add(10,20));
+    
+    
+    </script>
+</body>
+</html>

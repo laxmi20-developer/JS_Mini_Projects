@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>   
+</head>
+<body>
+    <script>
+        
+        // const result=arr.map((item)=>{return item*item});
+        // function my_map(a,cb){
+        //     let result=[];
+        //     for(let i=0;i<a.length;i++){
+        //         let element=cb(a[i]);
+        //         result.push(element);
+        //     }
+        //     return result;
+        // }
+        // console.log(my_map(arr,(item)=>{return item*item*item}));
+        const arr2=[1,2,3,4];
+        Array.prototype.my_map=  function (cb){
+            let result=[];
+            for(let i=0;i<arr2.length;i++){
+                let element=cb(arr2[i]);
+                result.push(element);
+            }
+            return result;
+        }
+        console.log(arr2.my_map((item)=>{return item*item*item}));
+    </script>
+</body>
+</html>

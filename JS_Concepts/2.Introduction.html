@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <title>Introduction</title>
+  <script>
+    document.write("<h4>Internal JS within head</h4>");
+    console.log("learning output statements");
+    
+  </script>
+</head>
+<body>
+
+    <h1>Introduction ,Types of JS</h1>
+    <select name="" id="num">
+      <option value="">Select Day</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+    </select>
+     <script src="./external.js"></script>
+    <script>
+        document.write("<h3>Internal Js within body</h3>");
+      let i=1;
+      let opt="<option>Select Day</option>";
+      while(i<32){
+        opt+="<option value="+i+">"+i+"</option>"
+        i++;
+      }
+      console.log(opt);
+      document.getElementById("num").innerHTML=opt;
+      
+    </script>
+   
+</body>
+</html>

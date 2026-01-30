@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+    Types of scopes
+    Global scope
+    block scope
+    function scope/local scope
+    -->
+</head>
+
+<body>
+    <h1>Hoisting & Types of scope</h1>
+    <script>
+        // console.log(x);
+        // console.log(y);
+        // debugger
+        // console.log(b);
+
+        // const x = 100;
+        // let y = 200;
+        // var b = 300;
+        // function add() {
+        //     console.log(x);
+        //     console.log(y);
+        //     console.log(b);
+        //     console.log(10 + 20);
+        // }
+        // add();
+        debugger
+
+        var a=10;
+        let b=20;
+        const c=30;
+        if(b<c){
+            const d=b<c;
+            console.log("d:",d);
+        }
+        // console.log("out side of the block:",d);
+        
+        function add (x,y){
+            const sum=x+y;
+            console.log("sum:",sum);
+            
+        }
+        add(a,b);
+
+
+    </script>
+</body>
+
+</html>

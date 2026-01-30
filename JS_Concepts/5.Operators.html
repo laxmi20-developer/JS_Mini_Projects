@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Operators</h1>
+    <script>
+        // 1.Arithmetic operators: +-*/%
+        // 2.Assignment operators
+        let festival="New Year 2026";
+        let n=10;
+        // n=n+100;
+        n+=100;
+        console.log("n:",n);
+        n-=100;
+        console.log("n:",n);
+        n*=100;
+        console.log("n:",n);
+        n/=100;
+        console.log("n:",n);
+        n%=100;
+        console.log("n:",n);
+        // 3.Relational operators
+        let a=10;
+        let b='10';
+        console.log(a==b);//true
+        console.log(a>b);//false
+        console.log(a<b);//false
+        console.log(a<=b);//true
+        console.log(a>=b);//true
+        console.log(a!=b);//false
+        console.log(a===b);//false
+
+        // 4.unary operators
+        // ++
+        let i=10;
+        console.log("i:",i);
+        
+        ++i;//i=i+1;
+        console.log("i:",i);
+        i++;
+        console.log("i:",i);
+        console.log(i++ + ++i);
+        console.log("i:",i);
+        console.log(--i + i-- - ++i);//-12 //39
+        console.log("i:",i);//12
+
+        //5. Logical operators
+        let x=10;
+        let y=20;
+        console.log((x==y)&&(x>y));
+        console.log((x<y)&&(x>y));
+        console.log((x<y)&&(x<=y));
+
+         console.log((x==y)||(x>y));
+        console.log((x<y)||(x>y));
+        console.log((x<y)||(x<=y));
+
+        console.log(!(x<y));
+        console.log(!(x>y));
+// 6.Bitwise operatoor
+        console.log(4&6);
+        console.log(4|6);
+        console.log(4^6);
+        console.log(~-10);
+    // 7.Ternary operator
+    // syntax: (condition)?statement1:statement2
+    // let age=prompt("Please Enter your age");
+    // age>18?console.log("Elgible to vote"):console.log("Not elgible to vote");
+
+    let m=100;
+    let o=200;
+    console.log(0&&o);
+    console.log(o&&m);
+
+    // m=prompt("Enter 1st number:");
+    // o=prompt("Enter 2nd number:");
+    // console.log(Number(m)+Number(o));
+    console.log(" "&&" ");
+    
+    // const arr=[1,2,3,4];
+    // const arr2=arr.filter(i=>{return 0&&" "})
+    // console.log(arr2);
+
+    // Number to string explicit type conversion
+    let h=100;
+    console.log(h,typeof h);
+    h=String(h);
+    console.log(h,typeof h);
+
+    const arr1=[10,20];
+        document.write(arr1);
+        const obj={
+            id:1,
+            name:"Udaykumar"
+        }
+        document.write(obj)
+    
+    
+
+    
+
+    
+
+
+        
+        
+
+        
+    </script>
+</body>
+</html>

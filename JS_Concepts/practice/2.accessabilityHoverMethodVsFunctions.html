@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+    1.All li's color should be green color when hover on particular li except that remaining all li color has to change to red
+    2.How to improve Accessability
+    3.object vs method
+    -->
+    <style>
+        ul{
+            color:green;
+        }
+        ul:hover li:not(:hover){
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 1.hover -->
+    <ul>
+        <li>aa</li>
+        <li>bb</li>
+        <li>c</li>
+        <li>d</li>
+    </ul>
+
+     <!--2. Accessibility starts with semantic HTML -->
+    <div onclick="submitForm()">Submit</div>
+    <button type="submit">Submit</button>
+    
+    <div>
+        <!-- <img src="login.png"> -->
+    </div>
+    <!-- “image” -->
+    <!-- <img src="login.png" alt="Login icon"> -->
+    <!-- “Image, Login icon” -->
+
+    <input type="text" placeholder="Email">
+    <!-- “Edit text” -->
+    <label for="email">Email Address</label>
+    <input id="email" type="email">
+    <!-- “Email Address, edit text” -->
+     <script>
+    // 3.object vs method
+        const obj={
+            name:"prudvi",
+            details:function(){
+                console.log(obj.name);
+            }
+        }
+        obj.details();
+        let name="vijay";
+        function details(){
+            console.log(name);            
+        }
+        details();
+    // 4.
+     </script>
+</body>
+</html>

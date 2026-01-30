@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>this</h1>
+    <button>General function</button>
+    <button>Arrow Function</button>
+    <script>
+        const btnEles=document.getElementsByTagName("button");
+        btnEles[0].addEventListener("click",function(){
+            console.log(this);
+        })
+         btnEles[1].addEventListener("click",()=>{
+            console.log(this);
+        })
+        console.log(this);
+        function fn(){
+        console.log(this);
+        }
+        fn();
+        // const obj={
+        //     name:"Ajay",
+        //      fn(){
+        //      console.log(this);
+        //     }
+        // }
+        //  const obj={
+        //     name:"Ajay",
+        //      fn:function(){
+        //      console.log(this);
+        //     }
+        // }
+        // obj.fn();
+        //   const obj={
+        //     name:"Ajay",
+        //      fn:()=>{
+        //      console.log(this);
+        //     }
+        // }
+        // obj.fn();
+        //  const obj={
+        //     name:"Ajay",
+        //     outer(){
+
+        //      const fn=()=>{
+        //      console.log(this);
+        //     }
+        //     fn();
+        // }
+        // }
+        // obj.outer();
+
+        // function User(name){
+        //     console.log(this); 
+        //     this.name=name;           
+        // }
+        // const person=new User("Jagadeeswar");
+        // console.log(person);
+
+        // const arr=new Array(1,2,3)
+
+        // call apply bind methods
+       function  show(location,num){
+                console.log(this.name,location,num);
+                
+            }
+        const p1={
+            name:"rama",
+            
+        }
+        show.call(p1,"blore",1);
+         const p2={
+            name:"vidya",
+            // show(){
+            //     console.log(this.name);
+                
+            // }
+        }
+        // p2.show();
+        show.call(p2,"jharkhand",2);
+        const p3={
+            name:"swaraj"
+        }
+        show.call(p3,"odissa",3);
+
+        show.apply(p1,["blore",1])
+        show.apply(p3,["odissa",3]);
+
+       const display= show.bind(p2,"jharkhand",2);
+       console.log(display);
+       display();
+       
+         const a=show.bind(p3,"odissa",3);
+         console.log(a);
+         a();
+         
+
+
+        
+
+        
+    </script>
+</body>
+</html>

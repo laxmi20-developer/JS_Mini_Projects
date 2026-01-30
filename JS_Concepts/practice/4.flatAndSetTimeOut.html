@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        for(var i=0;i<3;i++){
+            setTimeout(()=>{
+              console.log(i);
+            },100)                   
+        }
+        const arr=[1,2,[3,4,[30,40]],[5,6,[5]]];
+        // console.log(arr.flat());
+        // function arrayFlat(array){
+        //     let result=[];
+        //     for(item of array){
+        //         if(Array.isArray(item)){
+        //            result.push(... arrayFlat(item));
+        //         }else{
+        //             result.push(item);
+        //         }
+        //     }
+        //     return result;
+        // }
+        // console.log(arrayFlat(arr));
+        console.log(arr.flat(2));
+        
+
+        
+        
+    </script>
+</body>
+</html>
